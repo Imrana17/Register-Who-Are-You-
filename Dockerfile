@@ -5,4 +5,4 @@ FROM php:8.2-apache
 COPY . /var/www/html/
 
 # Open port 80 (the web browser port)
-EXPOSE 80
+EXPOSE 8000
