@@ -75,12 +75,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Server settings
         $mail->isSMTP();
+        /*
         $mail->Host = 'smtp.gmail.com'; // Set your SMTP server
         $mail->SMTPAuth = true;
         $mail->Username = 'imranasalis17@gmail.com'; // SMTP username
         $mail->Password = 'jqxlnnkxzkguxbap'; // SMTP password (use app password for Gmail)
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
+        */
+        $mail->Host = getenv('SMTP_HOST');
+$mail->SMTPAuth = getenv('SMTP_AUTH') === 'true';
+$mail->Username = getenv('SMTP_USER');
+$mail->Password = getenv('SMTP_PASS');
+$mail->SMTPSecure = getenv('SMTP_SECURE');
+$mail->Port = getenv('SMTP_PORT');
         
         // Recipients
         $mail->setFrom('imranasalis17@gmail.com', 'Form Handler');
